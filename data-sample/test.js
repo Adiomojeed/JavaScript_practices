@@ -40,13 +40,13 @@ function checkSmallestStudentParam (testData, testParam, value) {
 // Format - checkSmallestStudentParam('Lowest CGPA', 'cgpa') 
 
 
-// Top 10 Students with Highest CGPA
-function studentWithHighestCgpa (data) {
+// Top 10 Students with Highest Datas
+function studentWithHighestData (data, value) {
     let cgpa = data.map(x => {
-        return {name: x['firstName'], cgpa: x['cgpa']}
+        return {name: x['firstName'], value: x[value]}
     })
     cgpa.sort((a, b) => {
-        return b['cgpa'] - a['cgpa']
+        return b['value'] - a['value']
     })
 
     return cgpa.slice(0, 10).sort((x, y) => {
@@ -54,6 +54,15 @@ function studentWithHighestCgpa (data) {
     })
 }
 
+function studentWithHighestCgpa () {
+    return studentWithHighestData(data, 'cgpa')
+}
+
+function studentWithHighestAge () {
+    return studentWithHighestData(data, 'age')
+}
+
+console.log(studentWithHighestAge())
 
 // Youngest student of the highest level
 function youngestOfHighestLevel (data) {
