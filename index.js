@@ -79,22 +79,31 @@ function argss (...args) {
 
 argss(1,2,3,4,5)
 
-// class Vehicle {
-//     constructor(vType) {
-//         this.ype = vType
-//     }
-// }
-
-function Vehicle (vType) {
-    this.ype = vType
+class Vehicle {
+    constructor(vType) {
+        this.ype = vType
+    }
+    hello () {
+        return `I typed ${this.ype}`
+    }
 }
 
-const car = new Vehicle('carssssoooo')
-console.log(car.ype)
+class Car extends Vehicle {
+    wer () {
+        return super.hello() + 'yes'
+    }
+}
+
+//function Vehicle (vType) {
+//    this.ype = vType
+//}
+
+const car = new Car('carssssoooo')
+console.log(car.wer())
 
 const makeRequest = new Promise((resolve, reject) => {
     let makeServerRequest = false
-    if (makeServerRequest === false) {
+    if (makeServerRequest) {
         resolve ('Success')
     }
     else {
@@ -122,4 +131,34 @@ function frankenSplice(arr1, arr2, n) {
       return a - b
   }))
 
-  
+let arrza = [1,2,3,4,5,6]
+let sum = arrza.reduce((a, b) => {
+    a += b
+    return a
+})
+console.log(sum)
+
+const doSomethingAsync = () => {
+    return new Promise(resolve => {
+        setTimeout(resolve('do something'), 100)
+    })
+}
+
+const doSomething = async () => {
+    console.log(await doSomethingAsync())
+}
+
+doSomething()
+console.log('Before')
+console.log('After')
+
+import fetch from 'node-fetch'
+const fetch = 'node-fetch'
+const getUserData = () => {
+    return fetch('./sample.json')
+    .then(response => response.json())
+    .then(user => user[0])
+
+}
+
+getUserData()
